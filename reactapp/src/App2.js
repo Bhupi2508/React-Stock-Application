@@ -2,15 +2,17 @@ import logo from './logo.svg';
 import './App.css';
 //import './index.css';
 
-function App() {
+function App2() {
+    console.log("we are in App2 ");
+
   return (
     <div>
       <p>
-        <h1>Hello We rock!!</h1>
+        <h1>Hello We rock at APP 2!!</h1>
       </p>
     </div>
    
   );
 }
 
-export default App;
+export default App2;
