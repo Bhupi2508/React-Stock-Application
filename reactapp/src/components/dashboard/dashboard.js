@@ -3,8 +3,8 @@ import './dashboard.css';
 
 // generate random function
 const randomData = Math.floor(Math.random() * 10);
-console.log("randomData : ", randomData);
 
+// create an array for all the stock values
 let array = [];
 
 class Dashboard extends Component {
@@ -14,8 +14,6 @@ class Dashboard extends Component {
       number: '',
       numberMessage: ''
     }
-    this.onSubmit = this.onSubmit.bind(this);
-    this.handleInputChange = this.handleInputChange.bind(this);
   }
 
   // call on submit
@@ -23,15 +21,15 @@ class Dashboard extends Component {
     e.preventDefault();
     const data = this.state
     this.mainInput.value = "";
-    if (data.number) {
+    if (Number(data.number)) {
       array.push(data.number)
-      console.log("array : ", array);
     }
     this.setState({
       [e.target.name]: e.target.value
     })
   }
 
+  // onChange method
   handleInputChange = (e) => {
     e.preventDefault();
     if (e.target.value.length <= 1) {
@@ -41,12 +39,8 @@ class Dashboard extends Component {
     }
   }
 
-  com
-
   render() {
-    console.log("render");
-    let { number } = this.state
-    let { numberMessage } = this.state
+    let { number, numberMessage } = this.state
     if (number > randomData) {
       numberMessage = "Which is more than current stock value"
     } else if ((number < randomData) && (number)) {
@@ -84,15 +78,15 @@ class Dashboard extends Component {
           : null
         }
         </div>
-        <div>{(number)
+        <div>{(Number(number))
           ? <h3 className="h32" >Your bid is "{number}", {numberMessage}</h3>
           : null
         }
         </div>
         <div>{(number)
-          ? <h3 className="h32"> our numbers : <ul>
-            {array.map(function (name) {
-              return <li>{name}</li>;
+          ? <h3 className="h32"><ul>
+            {array.map(function (name, index) {
+              return <li>Stock values ({index + 1}) = {name}</li>;
             })}
           </ul>
           </h3>
