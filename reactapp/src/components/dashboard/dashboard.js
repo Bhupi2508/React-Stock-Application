@@ -3,10 +3,9 @@ import './dashboard.css';
 
 // generate random function
 const randomData = Math.floor(Math.random() * 10);
-console.log("randomData : ", randomData);
 
-let inputData;
-
+// create an array for all the stock values
+let array = [];
 
 class Dashboard extends Component {
   constructor(props) {
@@ -18,15 +17,19 @@ class Dashboard extends Component {
   }
 
   // call on submit
-  handleSubmit = (e) => {
+  onSubmit = (e) => {
     e.preventDefault();
     const data = this.state
     this.mainInput.value = "";
-    inputData = data.number
-    console.log("data ", data.number);
-    console.log("randomData : ", randomData);
+    if (Number(data.number)) {
+      array.push(data.number)
+    }
+    this.setState({
+      [e.target.name]: e.target.value
+    })
   }
 
+  // onChange method
   handleInputChange = (e) => {
     e.preventDefault();
     if (e.target.value.length <= 1) {
@@ -36,23 +39,21 @@ class Dashboard extends Component {
     }
   }
 
-
-
   render() {
-    let { number } = this.state
-    let { numberMessage } = this.state
+    let { number, numberMessage } = this.state
     if (number > randomData) {
-      numberMessage = "Your value is more than expected"
+      numberMessage = "Which is more than current stock value"
     } else if ((number < randomData) && (number)) {
-      numberMessage = "Your value is less than expected"
+      numberMessage = "Which is less than current stock value"
     } else if (number) {
-      numberMessage = "Your value is Correct"
+      numberMessage = "Which is current stock value"
     }
+
 
     return (
       <div>
         <div className="background">
-          <form className="form" onSubmit={this.handleSubmit}>
+          <form className="form">
             <div class="forMainDiv">
               <h3 className="h3">Stock Calculator</h3>
               <div className="form-group">
@@ -72,17 +73,25 @@ class Dashboard extends Component {
         </div>
         <div>
         </div>
-        <div>{(number)
-          ? <h3 className="h32" >Your Number is :  {number}</h3>
+        <div>{(randomData || randomData === 0)
+          ? <h3 className="h32" >Current Stock Value :  {randomData}</h3>
           : null
         }
         </div>
-
-        <div id="message">
-          {(number)
-            ? <h3 className="h32" >Your Number is : {numberMessage}</h3>
-            : null
-          }
+        <div>{(Number(number))
+          ? <h3 className="h32" >Your bid is "{number}", {numberMessage}</h3>
+          : null
+        }
+        </div>
+        <div>{(number)
+          ? <h3 className="h32"><ul>
+            {array.map(function (name, index) {
+              return <li>Stock values ({index + 1}) = {name}</li>;
+            })}
+          </ul>
+          </h3>
+          : null
+        }
         </div>
       </div>
     );
