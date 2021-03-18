@@ -1,0 +1,43 @@
+.form {
+    width: 43%;
+}
+.background{
+    background-image: url(../../assests/background_img.jpg);
+    background-repeat: round;
+    margin-top: -6%;
+  }
+
+.background2{
+    background-color: black;
+  }
+
+.main {
+    margin-left: 8%;
+    margin-top: 4%;
+}
+
+.h3 {
+    color: cornsilk;
+}
+
+.h32 {
+    color: teal;
+    margin-left: 4%;
+    margin-top: 3%;
+}
+
+.forMainDiv {
+    margin-left: 25%;
+    margin-top: 10%;
+
+}
+
+.generateBtn {
+    margin: 18%;
+    padding: 3%;
+    width: 50%;
+    background-color: lightsteelblue;
+    color: revert;
+    font-weight: bold;
+    font-size: x-large;
+}

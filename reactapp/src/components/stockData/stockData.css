@@ -1,0 +1,19 @@
+.h32 {
+    color: teal;
+    margin-left: -13%;
+    margin-top: -3%;
+}
+
+.h321 {
+    color: teal;
+    margin-left: -13%;
+    margin-top: 2%;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+    margin-top: 6%;
+}
