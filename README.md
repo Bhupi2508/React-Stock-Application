@@ -1,2 +1,2 @@
 # React
-This repository is for react learning purpose
+This repository will show the stock in real time.
